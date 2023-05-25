@@ -1,13 +1,21 @@
 <template>
+    <JwChat-index
+     :taleList="list"
+     @enter="bindEnter"
+     v-model="inputMsg"
+     :toolConfig="tool"
+ />
   <div class="top">
-      <input v-model="message" class="input" placeholder="  请输入您的问题" />
+      <input @keyup.enter="sendMessage" v-model="message" class="input" placeholder="  请输入您的问题" />
       <div class="btn" @click="sendMessage">Send</div>
     </div>
-    <div v-for="(item, index) in list" :key="index" class="container">
-      <textarea v-if="item.type == 'start'" class="start" v-model="item.msg">
-      </textarea>
-      <textarea v-else class="end" v-model="item.msg" >
-      </textarea>
+    <div v-for="(item,index) in list" :key="index" class="container">
+      <div v-if="item.type == 'start'" class="start">
+        {{ item.msg }}
+      </div>
+      <div v-else class="end">
+        {{ item.msg }}
+      </div>
     </div>
 </template>
 
@@ -18,14 +26,12 @@ export default {
     return {
       message: '',
       conversation: "",
-      list: [{
-        type: 'start',
-        msg: '开始'
-      },
-      {
-        type: 'end',
-        msg: '结束'
-      }]
+      list: []
+    }
+  },
+  computed:{
+    computedconversation:function () {
+        return `智能小乖乖:${this.conversation}`
     }
   },
   methods: {
@@ -36,22 +42,37 @@ export default {
         msg: `\n我: ${this.message}\n`
       })
 
-      this.conversation += `智能小乖乖:`
+      
       const evtSource = new EventSource(`/api/chat_manage/message/stream?message=${this.message}`)
+      let uuid 
       evtSource.addEventListener('stream', (event) => {
         console.log('event.data', event.data, new Date().getTime())
+        
         if (event.data !== '!!!!' && event.data !== '{}') {
           this.conversation += event.data
-          this.list.push({
-            type: 'end',
-            msg: this.conversation
-          })
-          console.log("11111", event.data, "3333333")
+          let i = this.list.findIndex(l=> l.uuid === uuid)
+          if(i===-1){
+            this.list.push({
+                type: 'end',
+                uuid,
+                msg: this.computedconversation
+            })
+            console.log("i===-1", this.list)
+          }else{
+            this.list[i].msg = this.computedconversation
+          }
+          
+          console.log("11111", this.computedconversation,"3333333")
         } else {
           this.conversation += '\n'
           evtSource.close()
         }
       })
+      let that =this
+      evtSource.onopen=function(){
+        that.conversation = ``
+        uuid = new Date().getTime() + '' + Math.random(10)
+      }
       evtSource.onerror = function (err) {
         console.error('EventSource failed:', err)
         evtSource.close()
@@ -104,6 +125,7 @@ export default {
   display: flex;
   justify-content: flex-end;
   background-color: #4caf50;
+  margin-left: auto;
 }
 .btn{
   width:100px;

@@ -1,7 +1,6 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from "vue"
+import App from "./App.vue"
 
-import 'element-ui/lib/theme-chalk/index.css';
+import "element-ui/lib/theme-chalk/index.css"
 
-
-createApp(App).mount('#app')
+createApp(App).mount("#app")
