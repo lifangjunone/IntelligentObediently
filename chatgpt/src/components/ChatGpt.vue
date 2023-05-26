@@ -7,16 +7,18 @@
       <div class="chat-window">
         <div class="message" v-for="(item ,index) in replyMsgList" :key="index">
          <div v-if="item.type==='question'" class="message-send">
-            {{ item.value }}
+            <img class='message-img' src="../assets/头像.svg">
+            <div>{{ item.value }}</div>
           </div>
           <div v-if="item.type==='answer'" class="message-content">
-            {{ item.value }}
+            <img class='message-img' src="../assets/头像4.svg">
+            <div>{{ item.value }}</div>
           </div> 
         </div>
       </div>
       <div class="input-container">
         <el-input
-          class="newMessage" 
+          class="newMessage"
           v-model="message" 
           placeholder="在此输入您的消息..." 
           @keyup.enter="sendMessage"
@@ -29,14 +31,6 @@
           </svg>
       </template>
     </el-input>
-        <!-- <el-input @keyup.enter="sendMessage" class="newMessage" v-model="message" placeholder="在此输入您的消息..." /> -->
-        <!-- <el-button class="btn" @click="sendMessage"> 发送 
-          <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
-            stroke-linejoin="round" class="h-4 w-4 mr-1" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-            <line x1="22" y1="2" x2="11" y2="13"></line>
-            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-          </svg>
-        </el-button> -->
       </div>
     </div>
   </div>
@@ -64,8 +58,6 @@ export default {
         value:this.message
       })
       this.userMessage = this.message
-      // this.conversation += `You: ${this.message}\n`
-      // this.conversation = `assistant:`
       let replyMsgList =''
       let obj ={
             type:'answer',
@@ -78,7 +70,6 @@ export default {
         console.log('event.data', event.data)
         
         if (event.data !== 'small_obediently finished answering' && event.data !== '{}') {
-          // this.replyMsgList += event.data
           obj.value+=event.data
           this.$forceUpdate()
 
@@ -141,15 +132,33 @@ export default {
 
     .message-content {
       background-color: #eee;
-      padding: 8px;
+      padding: 15px;
       border-radius: 8px;
       border: #ccc solid 1px;
+      display: flex;
+      .message-img{
+        width: 30px;
+        height: 30px;
+        margin-right: 20px;
+        div{
+          padding-top: 15px;
+        }
+      }
     }
     .message-send {
       background-color: white;
-      padding: 8px;
+      padding: 15px;
       border-radius: 8px;
       border: #ccc solid 1px;
+      display: flex;
+      .message-img{
+        width: 30px;
+        height: 30px;
+        margin-right: 20px;
+        div{
+          padding-top: 15px;
+        }
+      }
     }
   }
 
@@ -164,12 +173,14 @@ export default {
   display: flex;
   align-items: center;
   margin-top: 16px;
-  display: flex;
   justify-content: center;
-  padding:30px;
+  padding:180px;
   .newMessage {
-    width: auto;
-    margin-right: 16px
+    width: 100%;
+    margin-right: 16px;
+    :deep(.el-input__wrapper){
+      width: 100%;
+    }
   }
 }
 :deep(.input-container){
