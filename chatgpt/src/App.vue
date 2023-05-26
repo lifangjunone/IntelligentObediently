@@ -1,8 +1,10 @@
 <template>
-  <ChatAssistant></ChatAssistant>
+  <!-- <ChatAssistant></ChatAssistant> -->
+  <ChatGpt></ChatGpt>
 </template>
 
 <script setup>
-import ChatAssistant from './components/ChatAssistant.vue';
+// import ChatAssistant from './components/ChatAssistant.vue';
+import ChatGpt from './components/ChatGpt.vue';
 
 </script>
