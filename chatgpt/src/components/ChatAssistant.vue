@@ -9,9 +9,12 @@
         <el-button class="btn" @click="sendMessage">发送</el-button>
     </div>
     <div class="chat-window">
+
       <!-- <div v-for="(message, index) in replyMsgList" :key="index" class="message">
         <div class="message-content">{{ message }}</div>
       </div> -->
+
+
       <!-- <textarea class="message" v-model="replyMsgList">
       </textarea> -->
 
