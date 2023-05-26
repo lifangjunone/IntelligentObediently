@@ -5,7 +5,7 @@ module.exports = defineConfig({
     compress: false, // 不能压缩，不然不支持　stream 响应
     proxy: {
       "/api": {
-        target: "http://127.0.0.1:8000",
+        target: "http://192.168.137.228:8000",
         ws: true,
         changeOrigin: true,
       },
