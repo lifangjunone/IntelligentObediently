@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 1. 标签选择器 */
+        p {
+            color: red;
+            font-size: 12px;
+        }
+        /* 2. 类选择器 */
+        .niubi {
+            color: green;
+        }
+        .red {
+            background-color: red;
+        }
+        .green {
+            background-color: green;
+        }
+        .base {
+            width: 200px;
+            height: 100px;
+            border: 2px solid;
+        }
+        /* 3. id 选择器, 样式 # 号定义， 结构id调用， 只能调用一次
+        */
+        #pink {
+            background-color: blue;
+        }
+        /* 4. 通配符选择器 */
+        * {
+            background-color: aquamarine;
+        }
+        h2 {
+            font-family: Times, serif;
+        }
+    </style>
+</head>
+<body>
+    <h2>牛逼的牛逼的牛逼</h2>
+    <p>有点意思</p>
+    <div class="niubi">牛逼1</div>
+    <div>牛逼2</div>
+    <div>牛逼3</div>
+
+    <div class="red base"></div>
+    <div class="green base">少你</div>
+    <div class="red base"></div>
+    <div id="pink" class="base"></div>
+    <div class="base"></div>
+    <div class="base"></div>
+    <div class="base">></div>
+    <div class="base"></div>
+</body>
+</html>
