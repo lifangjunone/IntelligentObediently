@@ -16,24 +16,39 @@
         }
 
         .box .left {
+            position: relative;
             float: left;
             height: 100%;
-            width: 100px;
+            width: 130px;
             background-color: red;
             line-height: 40px;
             color: white;
             font-size: 16px;
+            font-family: 700;
         }
 
         .box .right {
             float: left;
             height: 100%;
-            width: 100px;
+            width: 70px;
             background-color: #c8bdbd;
             line-height: 40px;
             color: #6b6565;
             text-decoration: line-through;
             font-size: 16px;
+        }
+
+        .left i {
+            position: absolute;
+            width: 0;
+            height: 0;
+            right: 0;
+            top: 0;
+            border-top: 40px solid transparent;
+            border-right: 40px solid #c8bdbd;
+            border-left: 0 solid yellow;
+            border-bottom: 0 solid green;
+            margin-left: 50px;
         }
     </style>
 </head>
