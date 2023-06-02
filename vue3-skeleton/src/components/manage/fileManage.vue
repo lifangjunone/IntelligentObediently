@@ -21,7 +21,7 @@
       <header class="header header2">
         <div class="divText">
           <el-upload
-          action="/fileUploadAndDownload/upload"
+          action="/api/v1/fileUploadAndDownload/upload"
           :headers="{ 'Authorization': token }"
           :before-upload="checkFile"
           :show-file-list="false"
@@ -150,6 +150,7 @@ const handleExceed = (files, fileList) => {
 const uploadSuccess = (res) => {
   const { data } = res
   if (data.file) {
+    ElMessage.success('上传成功')
     getData()
   }
 }
