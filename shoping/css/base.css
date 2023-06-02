@@ -22,7 +22,15 @@ button {
     cursor: pointer;
 }
 
-a, li {
+a,
+li {
     color: #666;
     text-decoration: none;
+}
+
+button,
+input {
+    font-family: Microsoft YaHei, YaHei Pro, YaHei Arial, Helvetica, sans-serif Sana GB;
+    border: 0;
+    outline: none;
 }

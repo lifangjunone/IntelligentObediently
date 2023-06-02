@@ -1,7 +1,7 @@
 .w {
     width: 1200px;
     margin: 0 auto;
-} 
+}
 
 .style_red {
     color: #c81623;
@@ -12,24 +12,105 @@
     height: 31px;
     background-color: #f1f1f1;
 }
+
 .shortcut li {
     float: left;
     line-height: 31px;
 }
+
 .shortcut .fr ul li:nth-child(even) {
     width: 1px;
     height: 12px;
     margin: 9px 15px 0;
     background-color: #666;
 }
+
 .fl {
     float: left;
 }
 
 .fr {
-    float: right ;
+    float: right;
 }
 
 .arrow-icon::after {
     content: "\e903";
+    font-family: 'icomoon';
+    margin-left: 6px;
+}
+
+/* 头部制作 */
+.header {
+    position: relative;
+    height: 120px;
+    background-color: pink;
+}
+
+.logo {
+    position: absolute;
+    width: 260px;
+    height: 120px;
+    background-color: skyblue;
+}
+
+.logo h1 {
+    font-size: 20px;
+}
+
+.logo a {
+    display: block;
+    width: 260px;
+    height: 120px;
+    background: url(../images/logo.png) no-repeat;
+    background-position: center center;
+    background-size: 260px 120px;
+    text-indent: -9999px;
+    overflow: hidden;
+}
+
+.search {
+    position: absolute;
+    top: 25px;
+    left: 346px;
+    width: 538px;
+    height: 36px;
+    border: 2px solid #b1191a;
+}
+
+.search input {
+    float: left;
+    width: 454px;
+    height: 32px;
+    padding-left: 10px;
+}
+
+.search button {
+    float: left;
+    width: 80px;
+    height: 32px;
+    background-color: #b1191a;
+    font-size: 16px;
+    color: #fff;
+}
+
+.hotwords {
+    position: absolute;
+    top: 66px;
+    left: 346px;
+}
+
+.hotwords a {
+    margin: 0 10px;
+}
+
+.shopcar {
+    position: absolute;
+    right: 60px;
+    top: 25px;
+    width: 140px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    border: 1px solid #dfdfdf;
+    background-color: #f7f7f7;
 }
