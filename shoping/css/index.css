@@ -1,0 +1,99 @@
+.main {
+    width: 980px;
+    height: 455px;
+    margin-left: 220px;
+    margin-top: 10px;
+}
+.main .focus {
+    float: left;
+    width: 721px;
+    height: 455px;
+}
+
+.main .newsflash {
+    float: right;
+    width: 250px;
+    height: 455px;
+}
+
+.main .focus ul li img{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 455px;
+}
+
+.main .focus ul li h4 {
+    text-align: center;
+    margin-top: 13px;
+}
+
+.news {
+    height: 165px;
+}
+
+.lifeservice {
+    overflow: hidden;
+    height: 209px;
+    border: 2px solid #e4e4e4;
+    border-top: 0;
+}
+.lifeservice ul {
+    width: 252px;
+}
+.lifeservice ul li {
+    float: left;
+    width: 63px;
+    height: 71px;
+    text-align: center;
+    border-right: 1px solid #e4e4e4;
+    border-bottom: 1px solid #e4e4e4;
+    background-color: skyblue;
+}
+.lifeservice ul li i {
+    display: inline-block;
+    width: 24px;
+    height: 28px;
+    background-color: pink;
+    margin-top: 12px;
+    background: url(../upload/4.jpg) no-repeat;
+}
+
+.bargain img{
+    margin-top: 5px;
+    height: 76px;
+    width: 250px;
+}
+
+.news {
+    border: 2px solid #e4e4e4;
+}
+.news-hd {
+    line-height: 33px;
+    padding: 0 15px;
+    height: 33px;
+    border-bottom: 2px dotted #e4e4e4;
+}
+
+.news-hd .more::after {
+    content: "\e900";
+}
+
+.news-hd h5 {
+    float: left;
+}
+.news-hd .more {
+    float: right;
+}
+.news-bd {
+    padding: 5px 15px;
+}
+.news-bd ul li {
+    height: 24px;
+    line-height: 24px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
