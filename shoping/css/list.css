@@ -1,3 +1,9 @@
+.clearfix {
+    overflow: auto;
+}
+.nav {
+    overflow: hidden;
+}
 .sk {
     position: absolute;
     left:225px;
@@ -5,4 +11,64 @@
 }
 .sk img {
     height: 40px;
+}
+
+.sk_list {
+    float: left;
+}
+.sk_list ul li {
+    float: left;
+}
+.sk_list ul li a {
+    display: block;
+    line-height: 47px;
+    padding: 0 30px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #000;
+}
+.sk_con {
+    float: left;
+}
+.sk_con ul li {
+    float: left;
+}
+.sk_con ul li a { 
+    float: left;
+}
+.sk_con ul li a {
+    display: block;
+    line-height: 49px;
+    padding: 0 20px;
+    font-size: 14px;
+}
+.sk_con ul li:last-child a::after {
+    content: '\e91e';
+    font-family: 'icomoon';
+}
+
+.sk_container .sk_hd img {
+    width: 100%;
+}
+
+.sk_container .sk_bd ul li {
+    float: left;
+    width: 290px;
+    height: 150px;
+    border: 2px solid transparent;
+    margin-right: 12px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+.sk_container .sk_bd ul li:nth-child(4n) {
+    margin-right: 0;
+}
+
+.sk_container .sk_bd ul li img {
+    width: 286px;
+    height: 145px;
+}
+
+.sk_container .sk_bd ul li:hover {
+    border: 2px solid #c81523;
 }
