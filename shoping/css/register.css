@@ -1,0 +1,81 @@
+.w {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.style_red {
+    color: red;
+}
+header {
+    height: 200px;
+    border-bottom: 3px solid blue;
+    background-color: rgb(234, 251, 220);
+}
+
+header h1 {
+    text-align: center;
+    line-height: 200px;
+    color: blue;
+}
+
+.registerarea {
+    height: 522px;
+    border: 2px solid #ccc;
+    margin-top: 20px;
+}
+
+.registerarea h3 {
+    height: 52px;
+    border-bottom: 2px solid #ccc;
+    background-color: #ececec;
+    line-height: 52px;
+    padding: 0 12px;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.registerarea h3 .login {
+    float: right;
+    font-size: 16px;
+}
+.reg_form {
+    width: 600px;
+    margin: 50px auto 0;
+}
+
+.reg_form ul li label {
+    display: inline-block;
+    width: 88px;
+    text-align: right;
+}
+.reg_form   ul li input {
+    width: 242px;
+    height: 37px;
+    border: 1px solid #ccc;
+}
+.error {
+    color: red;
+}
+.success {
+    color: green;
+}
+.error_icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    vertical-align: center;
+    background: url(../upload/1.jpg) no-repeat;
+    background-size: 20px 20px;
+    margin: -5px;
+    padding: 0 12px;
+}
+.success_icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    vertical-align: center;
+    background: url(../upload/2.jpg) no-repeat;
+    background-size: 20px 20px;
+    margin: -5px;
+    padding: 0 12px;
+}
