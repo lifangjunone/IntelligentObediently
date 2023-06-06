@@ -48,7 +48,7 @@ header h1 {
     width: 88px;
     text-align: right;
 }
-.reg_form   ul li input {
+.reg_form   ul li .inp {
     width: 242px;
     height: 37px;
     border: 1px solid #ccc;
@@ -78,4 +78,21 @@ header h1 {
     background-size: 20px 20px;
     margin: -5px;
     padding: 0 12px;
+}
+.save {
+    margin-left: 137px;
+}
+.save em {
+    padding: 0 12px;
+    color: white;
+
+}
+.ruo {
+    background-color: red;
+}
+.zhong {
+    background-color: green;
+}
+.qiang{
+    background-color: rgb(253, 159, 35);
 }
