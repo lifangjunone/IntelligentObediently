@@ -1,0 +1,107 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "31954654",
+      "name": "Arrow-Small",
+      "font_class": "Arrow-Small",
+      "unicode": "e72e",
+      "unicode_decimal": 59182
+    },
+    {
+      "icon_id": "35856785",
+      "name": "保存",
+      "font_class": "baocun",
+      "unicode": "e668",
+      "unicode_decimal": 58984
+    },
+    {
+      "icon_id": "35856788",
+      "name": "删除",
+      "font_class": "shanchu",
+      "unicode": "e669",
+      "unicode_decimal": 58985
+    },
+    {
+      "icon_id": "35856790",
+      "name": "复制",
+      "font_class": "fuzhi",
+      "unicode": "e66a",
+      "unicode_decimal": 58986
+    },
+    {
+      "icon_id": "35856792",
+      "name": "修改编辑",
+      "font_class": "xiugaibianji",
+      "unicode": "e66b",
+      "unicode_decimal": 58987
+    },
+    {
+      "icon_id": "35856793",
+      "name": "搜索",
+      "font_class": "sousuo",
+      "unicode": "e66c",
+      "unicode_decimal": 58988
+    },
+    {
+      "icon_id": "35856794",
+      "name": "日历",
+      "font_class": "rili",
+      "unicode": "e66d",
+      "unicode_decimal": 58989
+    },
+    {
+      "icon_id": "35856797",
+      "name": "放弃修改",
+      "font_class": "fangqixiugai",
+      "unicode": "e66e",
+      "unicode_decimal": 58990
+    },
+    {
+      "icon_id": "35856798",
+      "name": "账号",
+      "font_class": "zhanghao",
+      "unicode": "e66f",
+      "unicode_decimal": 58991
+    },
+    {
+      "icon_id": "35856799",
+      "name": "添加+",
+      "font_class": "a-tianjia",
+      "unicode": "e670",
+      "unicode_decimal": 58992
+    },
+    {
+      "icon_id": "35856803",
+      "name": "刷新",
+      "font_class": "shuaxin",
+      "unicode": "e671",
+      "unicode_decimal": 58993
+    },
+    {
+      "icon_id": "35856804",
+      "name": "上传",
+      "font_class": "shangchuan",
+      "unicode": "e672",
+      "unicode_decimal": 58994
+    },
+    {
+      "icon_id": "35856806",
+      "name": "下载",
+      "font_class": "xiazai",
+      "unicode": "e673",
+      "unicode_decimal": 58995
+    },
+    {
+      "icon_id": "35864427",
+      "name": "隐藏密码",
+      "font_class": "yincangmima",
+      "unicode": "e674",
+      "unicode_decimal": 58996
+    }
+  ]
+}
