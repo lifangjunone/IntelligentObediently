@@ -1,5 +1,5 @@
 .DS_Store
-/vue3-skeleton/node_modules
+node_modules
 /dist
 
 
@@ -21,7 +21,3 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
-
-vue-demo/node_modules
-vue-example/node_modules
-core
