@@ -20,7 +20,7 @@ app.use(register)
 // app.use(ElementPlus)
 app.mount('#app')
 
-console.log(process.env.VUEL_APP_BASE_URL)
+console.log(process.env.VUE_APP_BASE_URL)
 
 fjRequest.request({
   url: 'http://192.168.137.228:8000/api/backend_manage/test',
