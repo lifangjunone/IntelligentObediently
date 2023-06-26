@@ -24,6 +24,6 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
-  ],
+, "src/global/register-element"  ],
   "exclude": ["node_modules"]
 }
