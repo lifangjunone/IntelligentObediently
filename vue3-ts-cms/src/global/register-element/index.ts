@@ -3,7 +3,7 @@ import { ElButton } from 'element-plus'
 
 const components = [ElButton]
 
-export function registerComponent(app: App) {
+export function registerElement(app: App) {
   for (const component of components) {
     app.component(component.name, component)
   }
