@@ -6,6 +6,8 @@ import register from './global'
 // import ElementPlus from 'element-plus'
 // import 'element-plus/dist/index.css'
 import 'element-plus/theme-chalk/el-loading.css'
+import 'normalize.css'
+import './assets/css/index.less'
 
 import './service/axios_demo.ts'
 import fjRequest from './service'
@@ -31,7 +33,7 @@ interface DataType {
 
 fjRequest
   .request<DataType>({
-    url: 'http://192.168.137.228:8000/api/backend_manage/test',
+    url: 'http://1127.0.0.1:8000/api/backend_manage/test',
     method: 'GET',
     showLoading: false,
     interceptors: {
@@ -46,8 +48,8 @@ fjRequest
 
 fjRequest
   .get<DataType>({
-    url: 'http://192.168.137.228:8000/api/backend_manage/test',
-    showLoading: true
+    url: 'http://127.0.0.1:8000/api/backend_manage/test',
+    showLoading: false
   })
   .then((res) => {
     console.log(res)
