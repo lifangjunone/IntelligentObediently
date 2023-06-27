@@ -92,6 +92,22 @@ class FjRequest {
         })
     })
   }
+
+  get<T>(config: FjRequestConfig): Promise<T> {
+    return this.request<T>({ ...config, method: 'GET' })
+  }
+
+  post<T>(config: FjRequestConfig): Promise<T> {
+    return this.request<T>({ ...config, method: 'POST' })
+  }
+
+  delete<T>(config: FjRequestConfig): Promise<T> {
+    return this.request<T>({ ...config, method: 'DELETE' })
+  }
+
+  patch<T>(config: FjRequestConfig): Promise<T> {
+    return this.request<T>({ ...config, method: 'PATCH' })
+  }
 }
 
 export default FjRequest

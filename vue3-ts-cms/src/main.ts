@@ -43,3 +43,12 @@ fjRequest
   .then((res) => {
     console.log(res)
   })
+
+fjRequest
+  .get<DataType>({
+    url: 'http://192.168.137.228:8000/api/backend_manage/test',
+    showLoading: true
+  })
+  .then((res) => {
+    console.log(res)
+  })
