@@ -27,5 +27,6 @@ export default defineComponent({
   height: 100%;
   width: 100%;
   background: url('../../assets/img/bg02.png') no-repeat;
+  background-size: cover;
 }
 </style>

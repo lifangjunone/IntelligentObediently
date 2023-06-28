@@ -11,6 +11,11 @@ module.exports = defineConfig({
   publicPath: './',
   transpileDependencies: true,
   // 配置方式一， 和webpack属性完全一致
+  devServer: {
+    open: true,
+    host: '127.0.0.1',
+    port: 8080
+  },
   configureWebpack: {
     resolve: {
       alias: {
