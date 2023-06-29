@@ -31,11 +31,8 @@ class FjRequest {
     this.instance.interceptors.request.use(
       (config) => {
         console.log('通用请求成功拦截器')
-        console.log('jjjj', this.showLoading)
 
         if (this.showLoading === true) {
-          console.log('xxxx', this.showLoading)
-
           this.loading = ElLoading.service({
             lock: true,
             text: 'Loading ...',

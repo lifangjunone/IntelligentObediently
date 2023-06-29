@@ -12,6 +12,7 @@ import './assets/css/index.less'
 
 import './service/axios_demo.ts'
 import fjRequest from './service'
+import {setupStore} from '@/store'
 
 const app = createApp(App)
 app.use(router)
@@ -22,9 +23,12 @@ app.use(register)
 // register(app)
 // 全局注册 element-plus
 // app.use(ElementPlus)
+setupStore()
 app.mount('#app')
 
 console.log(process.env.VUE_APP_BASE_URL)
+console.log(process.env.BASE_URL)
+console.log(process.env.NODE_ENV)
 
 interface DataType {
   data: any
