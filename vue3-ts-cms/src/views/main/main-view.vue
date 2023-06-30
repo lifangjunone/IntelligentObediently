@@ -1,11 +1,13 @@
 <template>
   <div class="main">
     <el-container class="main-content">
-      <el-aside class="page-left">
-        <nav-menu></nav-menu>
+      <el-aside class="page-left" :width="isCollapse ? '60px' : '240px'">
+        <nav-menu :collapse="isCollapse"></nav-menu>
       </el-aside>
       <el-container class="page">
-        <el-header class="page-header">Header</el-header>
+        <el-header class="page-header">
+          <nav-header @changeFold="changeMainFold"></nav-header>
+        </el-header>
         <el-main class="page-content">Main</el-main>
       </el-container>
     </el-container>
@@ -13,7 +15,14 @@
 </template>
 
 <script lang="ts" setup>
+import { ref } from 'vue'
 import NavMenu from '@/components/nav-menu'
+import NavHeader from '@/components/nav-header'
+
+const isCollapse = ref(false)
+const changeMainFold = (isFold: boolean) => {
+  isCollapse.value = isFold
+}
 </script>
 
 <style scoped lang="less">
@@ -25,9 +34,6 @@ import NavMenu from '@/components/nav-menu'
   height: 100%;
   .main-content {
     height: 100%;
-    .page-left {
-      width: 212.788px;
-    }
     .page {
       height: 100%;
       .page-content {
@@ -44,7 +50,7 @@ import NavMenu from '@/components/nav-menu'
   align-items: center;
 }
 .el-header {
-  height: 160px !important;
+  height: 80px !important;
 }
 .el-aside {
   overflow: hidden;
@@ -52,7 +58,7 @@ import NavMenu from '@/components/nav-menu'
   line-height: 200px;
   text-align: left;
   cursor: pointer;
-  background-color: #001529;
+  background-color: #545c64;
   transition: width 0.3s linear;
   scrollbar-width: none;
   -ms-overflow-stype: none;
