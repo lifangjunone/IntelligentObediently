@@ -1,7 +1,7 @@
 <template>
   <div class="nav-menu">
     <div class="logo">
-      <img class="img" src="~@/assets/img/lishao.png" alt="李氏集团李少" />
+      <img class="img" src="~@/assets/img/lishao2.png" alt="李氏集团李少" />
       <span>GOD</span>
     </div>
     <el-menu
@@ -76,14 +76,18 @@ const handleClick = (data) => {
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+
     span {
-      height: 80px;
+      height: 100%;
       line-height: 80px;
       display: inline-block;
       font-size: 30px;
     }
     .img {
+      display: inline-block;
       height: 100%;
+      height: 100%;
+      margin: 0 15px;
     }
   }
   .el-menu-vertical-demo {
