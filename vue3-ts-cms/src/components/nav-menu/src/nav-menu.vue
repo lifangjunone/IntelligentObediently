@@ -21,10 +21,7 @@
               <span>{{ item.name }}</span>
             </template>
             <template v-for="subitem in item.children" :key="subitem.id">
-              <el-menu-item
-                :index="subitem.url"
-                @click="handleClick(subitem.url)"
-              >
+              <el-menu-item :index="subitem.url" @click="handleClick(subitem)">
                 <i v-if="subitem.icon" class="iconfont"> {{ subitem.icon }} </i>
                 <span>{{ subitem.name }}</span>
               </el-menu-item>
@@ -32,7 +29,7 @@
           </el-sub-menu>
         </template>
         <template v-else-if="item.type === 2">
-          <el-menu-item :index="item.url" @click="handleClick(item.url)">
+          <el-menu-item :index="item.url" @click="handleClick(item)">
             <i v-if="item.icon" class="iconfont"> {{ item.icon }} </i>
             <span>{{ item.name }}</span>
           </el-menu-item>
@@ -45,6 +42,7 @@
 <script setup lang="ts">
 import { computed, defineProps } from 'vue'
 import { useStore } from '@/store'
+import { useRouter } from 'vue-router'
 
 defineProps({
   collapse: {
@@ -53,6 +51,7 @@ defineProps({
   }
 })
 const store = useStore()
+const router = useRouter()
 const userMenu = computed(() => store.state.login.userMenus)
 const handleOpen = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
@@ -60,8 +59,10 @@ const handleOpen = (key: string, keyPath: string[]) => {
 const handleClose = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
 }
-const handleClick = (data) => {
-  console.log('xxx', data)
+const handleClick = (data: any) => {
+  router.push({
+    path: data.url ?? '/not-found'
+  })
 }
 </script>
 
