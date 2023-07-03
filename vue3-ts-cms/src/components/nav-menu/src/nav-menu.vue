@@ -5,6 +5,7 @@
       <span>GOD</span>
     </div>
     <el-menu
+      :default-active="defaultValue"
       active-text-color="#ffd04b"
       background-color="#545c64"
       class="el-menu-vertical-demo"
@@ -40,9 +41,10 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineProps } from 'vue'
+import { computed, defineProps, ref } from 'vue'
 import { useStore } from '@/store'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
+import { pathMapToMenu } from '@/utils/map-menu'
 
 defineProps({
   collapse: {
@@ -52,7 +54,13 @@ defineProps({
 })
 const store = useStore()
 const router = useRouter()
+const route = useRoute()
 const userMenu = computed(() => store.state.login.userMenus)
+const currentPath = route.path
+console.log('currentPath: ' + currentPath)
+
+const menu = pathMapToMenu(userMenu.value, currentPath)
+const defaultValue = ref(menu?.id + '') ?? '3'
 const handleOpen = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
 }

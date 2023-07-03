@@ -17,7 +17,6 @@ import fjRequest from './service'
 import {setupStore} from '@/store'
 
 const app = createApp(App)
-app.use(router)
 app.use(store)
 // 插件方式引入同下效果一样
 app.use(register)
@@ -25,7 +24,9 @@ app.use(register)
 // register(app)
 // 全局注册 element-plus
 // app.use(ElementPlus)
+// 进行注册动态路由
 setupStore()
+app.use(router)
 app.mount('#app')
 
 console.log(process.env.VUE_APP_BASE_URL)
