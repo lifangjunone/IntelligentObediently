@@ -37,9 +37,3 @@ export interface Department {
   updateAt: string
   leader: string
 }
-
-export interface IDataType<T = any> {
-  msg: string
-  code: number
-  data: T
-}

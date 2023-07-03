@@ -1,5 +1,6 @@
 import fjRequest from '..'
-import { IAccount, IDataType, ILoginResult, UserInfo } from './type'
+import { IDataType } from '../type'
+import { IAccount, ILoginResult, UserInfo } from './type'
 
 enum LoginAPI {
   AccountLogin = '/login',

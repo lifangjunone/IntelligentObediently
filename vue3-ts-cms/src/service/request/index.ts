@@ -63,7 +63,7 @@ class FjRequest {
     )
   }
 
-  request<T>(config: FjRequestConfig<T>): Promise<T> {
+  request<T = any>(config: FjRequestConfig<T>): Promise<T> {
     return new Promise((resolve, reject) => {
       // 是否显示 loading
       if (config?.showLoading) {
@@ -91,19 +91,19 @@ class FjRequest {
     })
   }
 
-  get<T>(config: FjRequestConfig<T>): Promise<T> {
+  get<T = any>(config: FjRequestConfig<T>): Promise<T> {
     return this.request<T>({ ...config, method: 'GET' })
   }
 
-  post<T>(config: FjRequestConfig<T>): Promise<T> {
+  post<T = any>(config: FjRequestConfig<T>): Promise<T> {
     return this.request<T>({ ...config, method: 'POST' })
   }
 
-  delete<T>(config: FjRequestConfig<T>): Promise<T> {
+  delete<T = any>(config: FjRequestConfig<T>): Promise<T> {
     return this.request<T>({ ...config, method: 'DELETE' })
   }
 
-  patch<T>(config: FjRequestConfig<T>): Promise<T> {
+  patch<T = any>(config: FjRequestConfig<T>): Promise<T> {
     return this.request<T>({ ...config, method: 'PATCH' })
   }
 }
