@@ -10,6 +10,9 @@ const { ElementPlusResolver } = require('unplugin-vue-components/resolvers')
 module.exports = defineConfig({
   publicPath: './',
   transpileDependencies: true,
+  css: {
+    sourceMap: true // 开启 CSS source maps
+  },
   // 配置方式一， 和webpack属性完全一致
   devServer: {
     open: true,

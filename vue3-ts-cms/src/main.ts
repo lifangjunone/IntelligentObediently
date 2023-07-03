@@ -10,6 +10,7 @@ import 'element-plus/theme-chalk/index.css'
 import 'normalize.css'
 import '@/assets/css/index.less'
 import '@/assets/font/iconfont.css'
+import '@/global/style/global.less'
 // import '@/assets/font/iconfont.js'
 
 import './service/axios_demo.ts'

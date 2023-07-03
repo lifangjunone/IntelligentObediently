@@ -43,6 +43,7 @@ const changeMainFold = (isFold: boolean) => {
       .page-content {
         height: calc(100%-48px);
         .page-info {
+          margin-top: 10px;
           background-color: white;
         }
       }
