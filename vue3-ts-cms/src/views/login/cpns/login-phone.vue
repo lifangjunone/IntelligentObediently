@@ -16,24 +16,24 @@
 
 <script lang="ts" setup>
 import { reactive } from 'vue'
-import { useStore } from 'vuex'
-import { defineExpose } from 'vue'
+// import { useStore } from 'vuex'
+// import { defineExpose } from 'vue'
 
 import { rules } from '../config/phone-config'
 
-const store = useStore()
+// const store = useStore()
 const phone = reactive({
   phoneNumber: '',
   verifyCode: ''
 })
-const loginAction = (isKeepPassword: boolean) => {
-  console.log('调用phone loginAction')
-  store.dispatch('login/phoneLoginAction', { ...phone })
-}
+// const loginAction = (isKeepPassword: boolean) => {
+//   console.log('调用phone loginAction')
+//   store.dispatch('login/phoneLoginAction', { ...phone })
+// }
 
-defineExpose({
-  loginAction
-})
+// defineExpose({
+//   loginAction
+// })
 </script>
 
 <style scoped lang="less">

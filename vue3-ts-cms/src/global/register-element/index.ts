@@ -1,8 +1,8 @@
 import { App } from 'vue'
-import { ElButton } from 'element-plus'
+import { ElButton, ElRow, ElCol } from 'element-plus'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
-const components = [ElButton]
+const components = [ElButton, ElRow, ElCol]
 
 export function registerElement(app: App) {
   for (const component of components) {

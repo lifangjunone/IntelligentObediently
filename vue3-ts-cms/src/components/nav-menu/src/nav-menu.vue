@@ -82,7 +82,7 @@ const handleClick = (data: any) => {
       height: 100%;
       line-height: 80px;
       display: inline-block;
-      font-size: 30px;
+      font-size: 26px;
     }
     .img {
       display: inline-block;

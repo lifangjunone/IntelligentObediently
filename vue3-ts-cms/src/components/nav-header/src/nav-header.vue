@@ -26,7 +26,7 @@ const handleFoldClick = () => {
   width: 100%;
   display: flex;
   .fold-menu {
-    font-size: 46px;
+    font-size: 36px;
   }
   .content {
     flex: 1;

@@ -9,7 +9,9 @@
           <nav-header @changeFold="changeMainFold"></nav-header>
         </el-header>
         <el-main class="page-content">
-          <router-view></router-view>
+          <div class="page-info">
+            <router-view></router-view>
+          </div>
         </el-main>
       </el-container>
     </el-container>
@@ -40,6 +42,9 @@ const changeMainFold = (isFold: boolean) => {
       height: 100%;
       .page-content {
         height: calc(100%-48px);
+        .page-info {
+          background-color: white;
+        }
       }
     }
   }
