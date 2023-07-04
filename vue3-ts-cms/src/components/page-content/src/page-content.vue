@@ -44,6 +44,10 @@ const props = defineProps({
   contentTableConfig: {
     type: Object,
     required: true
+  },
+  requestInfo: {
+    type: Object,
+    required: true
   }
 })
 const selectComChange = (value: any) => {
@@ -51,13 +55,11 @@ const selectComChange = (value: any) => {
 }
 const store = useStore()
 store.dispatch('system/getPageListAction', {
-  pageUrl: '/users',
-  queryInfo: {
-    offset: 0,
-    size: 10
-  }
+  requestInfo: props.requestInfo
 })
-const dataList = computed(() => store.state.system.userList)
+const dataList = computed(() =>
+  store.getters[`system/pageListData`](props.requestInfo.pageName)
+)
 // const userCount = computed(() => store.state.system.userCount)
 </script>
 
