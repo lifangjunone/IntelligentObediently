@@ -10,7 +10,6 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { defineEmits } from 'vue'
 import { useStore } from '@/store'
 import { useRoute } from 'vue-router'
 import UserInfo from './user-info.vue'

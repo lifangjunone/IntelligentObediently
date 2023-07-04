@@ -27,7 +27,6 @@ const systemModule: Module<ISystemState, IRootState> = {
         playload.queryInfo
       )
       const { list, totalCount } = pageResult.data
-      console.log(list, totalCount)
       commit('changeUserList', list)
       commit('changeUserCount', totalCount)
     }

@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref, defineExpose } from 'vue'
+import { reactive, ref } from 'vue'
 import { ElForm } from 'element-plus'
 import { useStore } from 'vuex'
 
