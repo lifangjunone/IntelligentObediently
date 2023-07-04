@@ -30,10 +30,6 @@ setupStore()
 app.use(router)
 app.mount('#app')
 
-console.log(process.env.VUE_APP_BASE_URL)
-console.log(process.env.BASE_URL)
-console.log(process.env.NODE_ENV)
-
 interface DataType {
   data: any
   msg: string
@@ -52,7 +48,6 @@ fjRequest
     }
   })
   .then((res) => {
-    console.log(res)
   })
 
 fjRequest
@@ -61,5 +56,4 @@ fjRequest
     showLoading: false
   })
   .then((res) => {
-    console.log(res)
   })

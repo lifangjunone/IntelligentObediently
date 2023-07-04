@@ -27,10 +27,10 @@ const account = reactive({
 const store = useStore()
 const formRef = ref<InstanceType<typeof ElForm>>()
 const loginAction = (isKeepPassword: boolean) => {
-  console.log('子组件进行了打印')
+  // console.log('子组件进行了打印')
   formRef.value?.validate((valid) => {
     if (valid) {
-      console.log('真正提交登录请求')
+      // console.log('真正提交登录请求')
       if (isKeepPassword) {
         localCache.setCache('name', account.name)
         localCache.setCache('password', account.password)

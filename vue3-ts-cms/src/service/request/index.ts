@@ -30,7 +30,7 @@ class FjRequest {
     // 【Request】添加通用的请求拦截器
     this.instance.interceptors.request.use(
       (config) => {
-        console.log('通用请求成功拦截器')
+        // console.log('通用请求成功拦截器')
 
         if (this.showLoading === true) {
           this.loading = ElLoading.service({
@@ -43,7 +43,7 @@ class FjRequest {
         return config
       },
       (err) => {
-        console.log('通用请求失败拦截器')
+        // console.log('通用请求失败拦截器')
         return err
       }
     )
@@ -52,12 +52,12 @@ class FjRequest {
     this.instance.interceptors.response.use(
       (res) => {
         this.loading?.close()
-        console.log('通用响应成功拦截器')
+        // console.log('通用响应成功拦截器')
         return res.data
       },
       (err) => {
         this.loading?.close()
-        console.log('通用请求失败拦截器')
+        // console.log('通用请求失败拦截器')
         return err
       }
     )
@@ -72,14 +72,14 @@ class FjRequest {
       // 单独调用拦截器
       if (config.interceptors?.requestInterceptor) {
         config.interceptors.requestInterceptor(config)
-        console.log('单独请求调用拦截器')
+        // console.log('单独请求调用拦截器')
       }
       this.instance
         .request<any, T>(config)
         .then((res) => {
           if (config.interceptors?.responseInterceptor) {
             res = config.interceptors.responseInterceptor(res)
-            console.log('单独响应调用拦截器')
+            // console.log('单独响应调用拦截器')
           }
           this.showLoading = DEFAULT_LOADING
           resolve(res)

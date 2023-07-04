@@ -57,7 +57,6 @@ const router = useRouter()
 const route = useRoute()
 const userMenu = computed(() => store.state.login.userMenus)
 const currentPath = route.path
-console.log('currentPath: ' + currentPath)
 
 const menu = pathMapToMenu(userMenu.value, currentPath)
 const defaultValue = ref(menu?.id + '') ?? '3'
