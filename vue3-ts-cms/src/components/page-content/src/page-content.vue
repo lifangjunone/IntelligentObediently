@@ -33,6 +33,15 @@
           <el-button icon="Delete" size="small" type="text">删除</el-button>
         </div>
       </template>
+      <template #image="scope">
+        <el-image
+          style="width: 80px; height: 100px"
+          :src="scope.row.imageUrl"
+          :fit="fit"
+          :preview-src-list="[scope.row.imageUrl]"
+          :preview-teleported="true"
+        />
+      </template>
     </fj-table>
   </div>
 </template>
@@ -53,7 +62,7 @@ const props = defineProps({
   }
 })
 const store = useStore()
-const pageInfo = ref(props.requestInfo.pageInfo)
+const pageInfo = ref(props.requestInfo?.pageInfo)
 const selectComChange = (value: any) => {
   emit('selectChange', value)
 }
@@ -70,10 +79,10 @@ const getPageData = () => {
 getPageData()
 // 根据页面名动态从vuex中获取数据，并通过计算数据进行绑定
 const dataList = computed(() =>
-  store.getters[`system/pageListData`](props.requestInfo.pageName)
+  store.getters[`system/pageListData`](props.requestInfo?.pageName)
 )
 const dataCount = computed(() =>
-  store.getters[`system/pageCountData`](props.requestInfo.pageName)
+  store.getters[`system/pageCountData`](props.requestInfo?.pageName)
 )
 // 暴露本模块的方法
 defineExpose({
@@ -83,7 +92,7 @@ defineExpose({
 
 <style scoped lang="less">
 .page-content {
-  padding: 20px;
-  border-top: 20px solid #f5f5f5;
+  padding: 8px 20px;
+  border-top: 16px solid #f5f5f5;
 }
 </style>

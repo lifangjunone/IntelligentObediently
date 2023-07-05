@@ -36,7 +36,7 @@ const breadcrumbs = computed(() => {
   width: 100%;
   display: flex;
   .fold-menu {
-    font-size: 36px;
+    font-size: 32px;
   }
   .content {
     flex: 1;

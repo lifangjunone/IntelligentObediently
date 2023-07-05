@@ -41,9 +41,10 @@ const changeMainFold = (isFold: boolean) => {
     .page {
       height: 100%;
       .page-content {
-        height: calc(100%-48px);
+        padding: 10px;
+        height: calc(100%-28px);
         .page-info {
-          margin-top: 10px;
+          margin-top: 5px;
           background-color: white;
         }
       }
@@ -58,7 +59,7 @@ const changeMainFold = (isFold: boolean) => {
   align-items: center;
 }
 .el-header {
-  height: 80px !important;
+  height: 60px !important;
 }
 .el-aside {
   overflow: hidden;

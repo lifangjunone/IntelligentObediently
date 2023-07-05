@@ -28,7 +28,7 @@
         align="center"
       ></el-table-column>
       <template v-for="item in propList" :key="item.prop">
-        <el-table-column v-bind="item" align="center">
+        <el-table-column v-bind="item" align="center" show-overflow-tooltip>
           <template #default="scope">
             <slot :name="item.slotName" :row="scope.row">
               {{ scope.row[item.prop] }}
@@ -43,9 +43,6 @@
           v-model:current-page="pageInfo.page"
           v-model:page-size="pageInfo.size"
           :page-sizes="[10, 20, 50, 100]"
-          :small="small"
-          :disabled="disabled"
-          :background="background"
           layout="total, sizes, prev, pager, next, jumper"
           :total="dataCount"
           @size-change="handleSizeChange"

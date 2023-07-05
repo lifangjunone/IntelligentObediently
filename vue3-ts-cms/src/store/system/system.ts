@@ -10,7 +10,9 @@ const systemModule: Module<ISystemState, IRootState> = {
       userList: [],
       userCount: 0,
       roleList: [],
-      roleCount: 0
+      roleCount: 0,
+      shopList: [],
+      shopCount: 0
     }
   },
   getters: {
@@ -40,14 +42,20 @@ const systemModule: Module<ISystemState, IRootState> = {
     },
     changeRoleCount(state, rolerCount: number) {
       state.roleCount = rolerCount
+    },
+    changeShopList(state, shopList: any[]) {
+      state.shopList = shopList
+    },
+    changeShopCount(state, rolerCount: number) {
+      state.shopCount = rolerCount
     }
   },
   actions: {
     async getPageListAction({ commit }, playload) {
       const pageName = playload.requestInfo.pageName
       const pageUrl = playload.requestInfo.pageUrl
-      const queryInfo = playload.requestInfo.queryInfo
-      const pageInfo = playload.requestInfo.pageInfo
+      const queryInfo = playload.requestInfo?.queryInfo
+      const pageInfo = playload.requestInfo?.pageInfo
       console.log('==========', playload)
 
       const pageResult = await getPageListData(pageUrl, {

@@ -2,9 +2,7 @@
   <div class="page-search">
     <!-- <fj-form v-bind="searchFormConfig" :formData="formData"></fj-form> -->
     <fj-form v-bind="searchFormConfig" v-model="formData">
-      <template #header>
-        <h1>高级检索</h1>
-      </template>
+      <template #header> </template>
       <template #footer>
         <div class="handle-btns">
           <el-button icon="Refresh" @click="handleResetClick">重置</el-button>
@@ -52,10 +50,10 @@ const handleSearchClick = () => {
 
 <style scoped lang="less">
 .page-search {
-  padding-top: 20px;
+  padding-top: 5px;
 }
 .handle-btns {
   text-align: right;
-  padding: 0 50px 20px 0;
+  padding: 0 50px 10px 0;
 }
 </style>

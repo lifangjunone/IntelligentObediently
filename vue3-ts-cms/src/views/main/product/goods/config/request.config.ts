@@ -1,6 +1,6 @@
 export const requestInfo = {
-  pageUrl: '/roles',
-  pageName: 'Role',
+  pageUrl: '/shops',
+  pageName: 'Shop',
   queryInfo: {},
   pageInfo: {}
 }
