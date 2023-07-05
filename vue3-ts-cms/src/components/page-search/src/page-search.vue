@@ -26,7 +26,7 @@ const props = defineProps({
     required: true
   }
 })
-const emit = defineEmits(['searchClick'])
+const emit = defineEmits(['searchClick', 'resetClick'])
 const formItems = props.searchFormConfig?.formItems ?? []
 const formOriginData: any = {}
 for (const item of formItems) {
@@ -42,6 +42,7 @@ const handleResetClick = () => {
   // }
   // 方法二
   formData.value = formOriginData
+  emit('resetClick')
 }
 const handleSearchClick = () => {
   console.log('点击搜索了')
