@@ -8,7 +8,9 @@
       <template #footer>
         <div class="handle-btns">
           <el-button icon="Refresh" @click="handleResetClick">重置</el-button>
-          <el-button type="primary" icon="Search">搜索</el-button>
+          <el-button type="primary" icon="Search" @click="handleSearchClick"
+            >搜索</el-button
+          >
         </div>
       </template>
     </fj-form>
@@ -24,6 +26,7 @@ const props = defineProps({
     required: true
   }
 })
+const emit = defineEmits(['searchClick'])
 const formItems = props.searchFormConfig?.formItems ?? []
 const formOriginData: any = {}
 for (const item of formItems) {
@@ -39,6 +42,10 @@ const handleResetClick = () => {
   // }
   // 方法二
   formData.value = formOriginData
+}
+const handleSearchClick = () => {
+  console.log('点击搜索了')
+  emit('searchClick', formData.value)
 }
 </script>
 

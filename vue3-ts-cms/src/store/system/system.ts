@@ -42,6 +42,8 @@ const systemModule: Module<ISystemState, IRootState> = {
       const pageName = playload.requestInfo.pageName
       const pageUrl = playload.requestInfo.pageUrl
       const queryInfo = playload.requestInfo.queryInfo
+      console.log('==========', playload)
+
       const pageResult = await getPageListData(pageUrl, queryInfo)
       const { list, totalCount } = pageResult.data
       console.log('xxxx', pageName)

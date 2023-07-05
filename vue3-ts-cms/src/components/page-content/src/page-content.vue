@@ -54,13 +54,22 @@ const selectComChange = (value: any) => {
   emit('selectChange', value)
 }
 const store = useStore()
-store.dispatch('system/getPageListAction', {
-  requestInfo: props.requestInfo
-})
+// 调用store中的方法发送请求获取数据
+const getPageData = (queryInfo: any = {}) => {
+  store.dispatch('system/getPageListAction', {
+    requestInfo: props.requestInfo
+  })
+}
+getPageData()
+// 根据页面名动态从vuex中获取数据，并通过计算数据进行绑定
 const dataList = computed(() =>
   store.getters[`system/pageListData`](props.requestInfo.pageName)
 )
 // const userCount = computed(() => store.state.system.userCount)
+// 暴露本模块的方法
+defineExpose({
+  getPageData
+})
 </script>
 
 <style scoped lang="less">
