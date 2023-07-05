@@ -20,6 +20,11 @@ const systemModule: Module<ISystemState, IRootState> = {
 
         return res
       }
+    },
+    pageCountData(state) {
+      return (pageName: string) => {
+        return (state as any)[`${pageName.toLowerCase()}Count`]
+      }
     }
   },
 
@@ -42,9 +47,13 @@ const systemModule: Module<ISystemState, IRootState> = {
       const pageName = playload.requestInfo.pageName
       const pageUrl = playload.requestInfo.pageUrl
       const queryInfo = playload.requestInfo.queryInfo
+      const pageInfo = playload.requestInfo.pageInfo
       console.log('==========', playload)
 
-      const pageResult = await getPageListData(pageUrl, queryInfo)
+      const pageResult = await getPageListData(pageUrl, {
+        ...queryInfo,
+        ...pageInfo
+      })
       const { list, totalCount } = pageResult.data
       console.log('xxxx', pageName)
 

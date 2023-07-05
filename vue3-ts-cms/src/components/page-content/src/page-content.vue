@@ -1,7 +1,9 @@
 <template>
   <div class="page-content">
     <fj-table
+      v-model:pageInfo="pageInfo"
       :dataList="dataList"
+      :dataCount="dataCount"
       v-bind="contentTableConfig"
       @selectionChange="selectComChange"
     >
@@ -37,7 +39,7 @@
 
 <script setup lang="ts">
 import { useStore } from '@/store'
-import { computed } from 'vue'
+import { computed, ref, watch } from 'vue'
 import FjTable from '@/base-ui/table'
 const emit = defineEmits(['selectChange'])
 const props = defineProps({
@@ -50,12 +52,17 @@ const props = defineProps({
     required: true
   }
 })
+const store = useStore()
+const pageInfo = ref(props.requestInfo.pageInfo)
 const selectComChange = (value: any) => {
   emit('selectChange', value)
 }
-const store = useStore()
+watch(pageInfo, (newValue: any) => {
+  props.requestInfo.pageInfo = newValue
+  getPageData()
+})
 // 调用store中的方法发送请求获取数据
-const getPageData = (queryInfo: any = {}) => {
+const getPageData = () => {
   store.dispatch('system/getPageListAction', {
     requestInfo: props.requestInfo
   })
@@ -65,7 +72,9 @@ getPageData()
 const dataList = computed(() =>
   store.getters[`system/pageListData`](props.requestInfo.pageName)
 )
-// const userCount = computed(() => store.state.system.userCount)
+const dataCount = computed(() =>
+  store.getters[`system/pageCountData`](props.requestInfo.pageName)
+)
 // 暴露本模块的方法
 defineExpose({
   getPageData

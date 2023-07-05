@@ -40,14 +40,14 @@
     <div class="footer">
       <slot name="footer">
         <el-pagination
-          v-model:current-page="currentPage4"
-          v-model:page-size="pageSize4"
+          v-model:current-page="pageInfo.page"
+          v-model:page-size="pageInfo.size"
           :page-sizes="[10, 20, 50, 100]"
           :small="small"
           :disabled="disabled"
           :background="background"
           layout="total, sizes, prev, pager, next, jumper"
-          :total="400"
+          :total="dataCount"
           @size-change="handleSizeChange"
           @current-change="handleCurrentChange"
         />
@@ -57,11 +57,19 @@
 </template>
 
 <script setup lang="ts">
-const emit = defineEmits(['selectionChange'])
+const emit = defineEmits(['selectionChange', 'update:pageInfo'])
 const props = defineProps({
   title: {
     type: String,
     default: ''
+  },
+  pageInfo: {
+    type: Object,
+    default: () => ({ page: 0, size: 10 })
+  },
+  dataCount: {
+    type: Number,
+    default: 0
   },
   dataList: {
     type: Array,
@@ -82,6 +90,13 @@ const props = defineProps({
 })
 const handleSelectChange = (value: any) => {
   emit('selectionChange', value)
+}
+const handleSizeChange = (size: number) => {
+  // emit('update:queryInfo', { ...props.queryInfo, size: size })
+  emit('update:pageInfo', { ...props.pageInfo, size })
+}
+const handleCurrentChange = (page: number) => {
+  emit('update:pageInfo', { ...props.pageInfo, page })
 }
 </script>
 
