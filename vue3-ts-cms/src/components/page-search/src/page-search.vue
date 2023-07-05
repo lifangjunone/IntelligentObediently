@@ -32,10 +32,13 @@ for (const item of formItems) {
 console.log(formOriginData)
 const formData = ref(formOriginData)
 const handleResetClick = () => {
-  for (const key in formOriginData) {
-    // formData.value[`${key}`] = formOriginData[key]
-    formData.value[`${key}`] = ''
-  }
+  // 方法一
+  // for (const key in formOriginData) {
+  //   // formData.value[`${key}`] = formOriginData[key]
+  //   formData.value[`${key}`] = ''
+  // }
+  // 方法二
+  formData.value = formOriginData
 }
 </script>
 
