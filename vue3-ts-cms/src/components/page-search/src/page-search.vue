@@ -7,7 +7,7 @@
       </template>
       <template #footer>
         <div class="handle-btns">
-          <el-button icon="Refresh">重置</el-button>
+          <el-button icon="Refresh" @click="handleResetClick">重置</el-button>
           <el-button type="primary" icon="Search">搜索</el-button>
         </div>
       </template>
@@ -24,13 +24,19 @@ const props = defineProps({
     required: true
   }
 })
-const formData = ref({
-  id: '',
-  name: '',
-  password: '',
-  sport: '',
-  createTime: ''
-})
+const formItems = props.searchFormConfig?.formItems ?? []
+const formOriginData: any = {}
+for (const item of formItems) {
+  formOriginData[item.field] = ''
+}
+console.log(formOriginData)
+const formData = ref(formOriginData)
+const handleResetClick = () => {
+  for (const key in formOriginData) {
+    // formData.value[`${key}`] = formOriginData[key]
+    formData.value[`${key}`] = ''
+  }
+}
 </script>
 
 <style scoped lang="less">

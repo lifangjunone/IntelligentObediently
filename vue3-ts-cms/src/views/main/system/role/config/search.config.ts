@@ -13,7 +13,7 @@ export const searchFormConfig: IForm = {
     },
     {
       field: 'intro',
-      type: 'password',
+      type: 'input',
       label: '权限介绍',
       placeholder: '请输入权限介绍'
     },
