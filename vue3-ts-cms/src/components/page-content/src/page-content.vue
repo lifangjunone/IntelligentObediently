@@ -37,6 +37,7 @@
             size="small"
             type="primary"
             link
+            @click="handleEditClick(scope.row)"
             >编辑</el-button
           >
           <el-button
@@ -70,7 +71,7 @@ import FjTable from '@/base-ui/table'
 import { usePermission } from '@/hooks/use-permission'
 
 const store = useStore()
-const emit = defineEmits(['selectChange', 'clickCreate'])
+const emit = defineEmits(['selectChange', 'clickCreate', 'clickEdit'])
 const props = defineProps({
   contentTableConfig: {
     type: Object,
@@ -97,9 +98,10 @@ watch(pageInfo, (newValue: any) => {
 })
 // 新建
 const handleCreateClick = () => {
-  console.log('create')
-
   emit('clickCreate')
+}
+const handleEditClick = (item: any) => {
+  emit('clickEdit', item)
 }
 // 查询请求： 调用store中的方法发送请求获取数据
 const getPageData = () => {

@@ -20,10 +20,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import FjForm from '@/base-ui/form'
 const props = defineProps({
   contentTableConfig: {
+    type: Object,
+    default: () => ({})
+  },
+  sourceValue: {
     type: Object,
     default: () => ({})
   },
@@ -38,7 +42,19 @@ const props = defineProps({
 })
 const dialogVisible = ref(false)
 
-const formData = ref(props.formData)
+const formData = ref<any>({})
+watch(
+  () => props.sourceValue,
+  // props.sourceValue,
+  (newValue) => {
+    for (const item of props.modalConfig.formItems) {
+      formData.value[`${item.field}`] = newValue[`${item.field}`]
+    }
+  },
+  {
+    deep: true
+  }
+)
 defineExpose({
   dialogVisible
 })

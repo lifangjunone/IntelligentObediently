@@ -20,7 +20,8 @@ module.exports = {
     'typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-explicit-any': ['off'],
     '@typescript-eslint/no-unused-vars': 'off',
-    'vue/no-mutating-props': 'off'
+    'vue/no-mutating-props': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off'
     // 'no-redeclare': off,
     // 'no-self-assign': off
   }
