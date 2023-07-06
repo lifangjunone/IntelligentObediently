@@ -56,14 +56,12 @@ const systemModule: Module<ISystemState, IRootState> = {
       const pageUrl = playload.requestInfo.pageUrl
       const queryInfo = playload.requestInfo?.queryInfo
       const pageInfo = playload.requestInfo?.pageInfo
-      console.log('==========', playload)
 
       const pageResult = await getPageListData(pageUrl, {
         ...queryInfo,
         ...pageInfo
       })
       const { list, totalCount } = pageResult.data
-      console.log('xxxx', pageName)
 
       commit(`change${pageName}List`, list)
       commit(`change${pageName}Count`, totalCount)

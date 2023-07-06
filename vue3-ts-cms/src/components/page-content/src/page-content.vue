@@ -29,18 +29,22 @@
       </template>
       <template #handle>
         <div class="handle-btns">
-          <el-button icon="Edit" size="small" type="text">编辑</el-button>
-          <el-button icon="Delete" size="small" type="text">删除</el-button>
+          <el-button icon="Edit" size="small" type="primary" link
+            >编辑</el-button
+          >
+          <el-button icon="Delete" size="small" type="primary" link
+            >删除</el-button
+          >
         </div>
       </template>
-      <template #image="scope">
-        <el-image
-          style="width: 80px; height: 100px"
-          :src="scope.row.imageUrl"
-          :fit="fit"
-          :preview-src-list="[scope.row.imageUrl]"
-          :preview-teleported="true"
-        />
+      <template
+        v-for="item in dynamicSlotList"
+        :key="item.prop"
+        #[item.slotName]="scope"
+      >
+        <template v-if="item.slotName">
+          <slot :name="item.slotName" :row="scope.row"></slot>
+        </template>
       </template>
     </fj-table>
   </div>
@@ -83,6 +87,16 @@ const dataList = computed(() =>
 )
 const dataCount = computed(() =>
   store.getters[`system/pageCountData`](props.requestInfo?.pageName)
+)
+// 获取所有动态插槽
+const dynamicSlotList = props.contentTableConfig?.propList.filter(
+  (item: any) => {
+    if (item.slotName === 'status') return false
+    if (item.slotName === 'createAt') return false
+    if (item.slotName === 'updateAt') return false
+    if (item.slotName === 'handle') return false
+    return true
+  }
 )
 // 暴露本模块的方法
 defineExpose({

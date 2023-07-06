@@ -4,8 +4,13 @@ export const contentTableConfig = {
   showSelectColumn: true,
   propList: [
     { prop: 'name', label: '商品名称', minWidth: '80' },
-    { prop: 'oldPrice', label: '原价格', minWidth: '60' },
-    { prop: 'newPrice', label: '现价格', minWidth: '60' },
+    { prop: 'oldPrice', label: '原价格', minWidth: '60', slotName: 'oldPrice' },
+    {
+      prop: 'newPrice',
+      label: '现价格',
+      minWidth: '60',
+      sloatName: 'newPrice'
+    },
     { prop: 'imageUrl', label: '商品图片', minWidth: '100', slotName: 'image' },
     { prop: 'enable', label: '状态', minWidth: '80', slotName: 'status' },
     {
