@@ -30,7 +30,6 @@ const formOriginData: any = {}
 for (const item of formItems) {
   formOriginData[item.field] = ''
 }
-console.log(formOriginData)
 const formData = ref(formOriginData)
 const handleResetClick = () => {
   // 方法一
@@ -43,7 +42,6 @@ const handleResetClick = () => {
   emit('resetClick')
 }
 const handleSearchClick = () => {
-  console.log('点击搜索了')
   emit('searchClick', formData.value)
 }
 </script>

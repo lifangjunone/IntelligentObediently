@@ -8,7 +8,9 @@
       @selectionChange="selectComChange"
     >
       <template #headerHandler>
-        <el-button type="primary">新建用户</el-button>
+        <el-button v-if="isCreate" type="primary"
+          >新建{{ contentTableConfig.title }}</el-button
+        >
       </template>
       <template #status="scope">
         <el-button
@@ -29,10 +31,20 @@
       </template>
       <template #handle>
         <div class="handle-btns">
-          <el-button icon="Edit" size="small" type="primary" link
+          <el-button
+            v-if="isUpdate"
+            icon="Edit"
+            size="small"
+            type="primary"
+            link
             >编辑</el-button
           >
-          <el-button icon="Delete" size="small" type="primary" link
+          <el-button
+            v-if="isDelete"
+            icon="Delete"
+            size="small"
+            type="primary"
+            link
             >删除</el-button
           >
         </div>
@@ -54,6 +66,9 @@
 import { useStore } from '@/store'
 import { computed, ref, watch } from 'vue'
 import FjTable from '@/base-ui/table'
+import { usePermission } from '@/hooks/use-permission'
+
+const store = useStore()
 const emit = defineEmits(['selectChange'])
 const props = defineProps({
   contentTableConfig: {
@@ -65,17 +80,22 @@ const props = defineProps({
     required: true
   }
 })
-const store = useStore()
 const pageInfo = ref(props.requestInfo?.pageInfo)
 const selectComChange = (value: any) => {
   emit('selectChange', value)
 }
+// 获取操作的权限
+const isCreate = usePermission(props.requestInfo?.pageName, 'create')
+const isDelete = usePermission(props.requestInfo?.pageName, 'delete')
+const isUpdate = usePermission(props.requestInfo?.pageName, 'update')
+const isQuery = usePermission(props.requestInfo?.pageName, 'query')
 watch(pageInfo, (newValue: any) => {
   props.requestInfo.pageInfo = newValue
   getPageData()
 })
 // 调用store中的方法发送请求获取数据
 const getPageData = () => {
+  if (!isQuery) return
   store.dispatch('system/getPageListAction', {
     requestInfo: props.requestInfo
   })

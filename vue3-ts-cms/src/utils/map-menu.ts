@@ -29,7 +29,7 @@ export function mapMenusToRoutes(userMenus: any): RouteRecordRaw[] {
         if (route) {
           routers.push(route)
         }
-      } else {
+      } else if (menu.type === 1) {
         _recurseGetRoute(menu.children)
       }
     }
@@ -61,6 +61,21 @@ export function pathMapBreadcrumbs(userMenus: any[], currentPath: string): any {
   const breadcrumbs: IBreadcrumb[] = []
   pathMapToMenu(userMenus, currentPath, breadcrumbs)
   return breadcrumbs
+}
+
+export function mapMenusToPermissions(userMenus: any[]) {
+  const permissions: string[] = []
+  const _recurseGetPermission = (menus: any[]) => {
+    for (const menu of menus) {
+      if (menu.type === 1 || menu.type === 2) {
+        _recurseGetPermission(menu.children ?? [])
+      } else if (menu.type === 3) {
+        permissions.push(menu.permission)
+      }
+    }
+  }
+  _recurseGetPermission(userMenus)
+  return permissions
 }
 
 export { firstMenu }

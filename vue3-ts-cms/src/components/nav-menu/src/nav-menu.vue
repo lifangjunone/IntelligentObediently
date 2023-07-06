@@ -61,10 +61,10 @@ const currentPath = route.path
 const menu = pathMapToMenu(userMenu.value, currentPath)
 const defaultValue = ref(menu?.id + '') ?? '3'
 const handleOpen = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath)
+  console.log('')
 }
 const handleClose = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath)
+  console.log('')
 }
 const handleClick = (data: any) => {
   router.push({

@@ -2,13 +2,14 @@
   <div class="fj-table">
     <div class="header">
       <slot name="header">
-        <div class="title">{{ title }}</div>
+        <div class="title">{{ title }}列表</div>
         <div class="handle">
           <slot name="headerHandler"></slot>
         </div>
       </slot>
     </div>
     <el-table
+      v-bind="childrenProps"
       :data="dataList"
       border
       style="width: 100%"
@@ -37,7 +38,7 @@
         </el-table-column>
       </template>
     </el-table>
-    <div class="footer">
+    <div class="footer" v-if="showFooter">
       <slot name="footer">
         <el-pagination
           v-model:current-page="pageInfo.page"
@@ -83,6 +84,14 @@ const props = defineProps({
   showSelectColumn: {
     type: Boolean,
     default: false
+  },
+  childrenProps: {
+    type: Object,
+    default: () => ({})
+  },
+  showFooter: {
+    type: Boolean,
+    default: true
   }
 })
 const handleSelectChange = (value: any) => {
