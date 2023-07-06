@@ -17,7 +17,7 @@ export const modalConfig = {
       type: 'password',
       label: '密码',
       placeholder: '请输入密码',
-      isHidden: false
+      isHidden: true
     },
     {
       field: 'cellphone',

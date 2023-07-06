@@ -5,6 +5,7 @@
       :title="`新建${contentTableConfig.title}`"
       width="30%"
       center
+      destroy-on-close
     >
       <fj-form v-bind="modalConfig" v-model="formData"></fj-form>
       <template #footer>
@@ -41,7 +42,6 @@ const props = defineProps({
   }
 })
 const dialogVisible = ref(false)
-
 const formData = ref<any>({})
 watch(
   () => props.sourceValue,
