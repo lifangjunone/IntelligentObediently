@@ -8,7 +8,7 @@
       @selectionChange="selectComChange"
     >
       <template #headerHandler>
-        <el-button v-if="isCreate" type="primary"
+        <el-button v-if="isCreate" type="primary" @click="handleCreateClick"
           >新建{{ contentTableConfig.title }}</el-button
         >
       </template>
@@ -29,7 +29,7 @@
         <span>{{ $filters.formatTime(scope.row.updateAt) }}</span>
         <!-- <strong>{{ scope.row.createAt }}</strong> -->
       </template>
-      <template #handle>
+      <template #handle="scope">
         <div class="handle-btns">
           <el-button
             v-if="isUpdate"
@@ -45,6 +45,7 @@
             size="small"
             type="primary"
             link
+            @click="handleDeleteClick(scope.row)"
             >删除</el-button
           >
         </div>
@@ -69,7 +70,7 @@ import FjTable from '@/base-ui/table'
 import { usePermission } from '@/hooks/use-permission'
 
 const store = useStore()
-const emit = defineEmits(['selectChange'])
+const emit = defineEmits(['selectChange', 'clickCreate'])
 const props = defineProps({
   contentTableConfig: {
     type: Object,
@@ -89,11 +90,18 @@ const isCreate = usePermission(props.requestInfo?.pageName, 'create')
 const isDelete = usePermission(props.requestInfo?.pageName, 'delete')
 const isUpdate = usePermission(props.requestInfo?.pageName, 'update')
 const isQuery = usePermission(props.requestInfo?.pageName, 'query')
+
 watch(pageInfo, (newValue: any) => {
   props.requestInfo.pageInfo = newValue
   getPageData()
 })
-// 调用store中的方法发送请求获取数据
+// 新建
+const handleCreateClick = () => {
+  console.log('create')
+
+  emit('clickCreate')
+}
+// 查询请求： 调用store中的方法发送请求获取数据
 const getPageData = () => {
   if (!isQuery) return
   store.dispatch('system/getPageListAction', {
@@ -101,6 +109,14 @@ const getPageData = () => {
   })
 }
 getPageData()
+// 删除请求
+const handleDeleteClick = (item: any) => {
+  console.log('item', item)
+  store.dispatch('system/deletePageDataAction', {
+    requestInfo: props.requestInfo,
+    id: item.id
+  })
+}
 // 根据页面名动态从vuex中获取数据，并通过计算数据进行绑定
 const dataList = computed(() =>
   store.getters[`system/pageListData`](props.requestInfo?.pageName)

@@ -1,7 +1,7 @@
 import { IRootState } from '../type'
 import { ISystemState } from './typs'
 import { Module } from 'vuex'
-import { getPageListData } from '@/service/main/system/system'
+import { getPageListData, deletePageData } from '@/service/main/system/system'
 
 const systemModule: Module<ISystemState, IRootState> = {
   namespaced: true,
@@ -59,11 +59,11 @@ const systemModule: Module<ISystemState, IRootState> = {
     }
   },
   actions: {
-    async getPageListAction({ commit }, playload) {
-      const pageName = playload.requestInfo.pageName
-      const pageUrl = playload.requestInfo.pageUrl
-      const queryInfo = playload.requestInfo?.queryInfo
-      const pageInfo = playload.requestInfo?.pageInfo
+    async getPageListAction({ commit }, payload) {
+      const pageName = payload.requestInfo.pageName
+      const pageUrl = payload.requestInfo.pageUrl
+      const queryInfo = payload.requestInfo?.queryInfo
+      const pageInfo = payload.requestInfo?.pageInfo
 
       const pageResult = await getPageListData(pageUrl, {
         ...queryInfo,
@@ -73,6 +73,15 @@ const systemModule: Module<ISystemState, IRootState> = {
 
       commit(`change${pageName}List`, list)
       commit(`change${pageName}Count`, totalCount)
+    },
+    async deletePageDataAction({ dispatch }, payload: any) {
+      const id = payload.id
+      const pageName = payload.requestInfo.pageName
+      const pageUrl = `/${pageName.toLowerCase()}/${id}`
+      // 调用删除请求
+      await deletePageData(pageUrl)
+      // 重新请求最新的数据
+      dispatch('getPageListAction', payload)
     }
   }
 }
