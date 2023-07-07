@@ -43,7 +43,7 @@ const loginModule: Module<ILoginState, IRootState> = {
   },
   actions: {
     // 账号登录
-    async accountLoginAction({ commit }, playload: IAccount) {
+    async accountLoginAction({ commit, dispatch }, playload: IAccount) {
       console.log('执行accountLoginAction', playload)
       // 1, 登录获取 token
       const loginResult = await accountLoginRequest(playload)
@@ -57,12 +57,17 @@ const loginModule: Module<ILoginState, IRootState> = {
       const userInfo = userInfoResult.data
       commit('changeUserInfo', userInfo)
       localCache.setCache('userInfo', userInfo)
-      // 3, 请求用户菜单
+      // 发送初始化请求，获取初始化的一些数据
+      // 这样写认为是调用模块自己的 actions 中的方法，不正确
+      // dispatch('getInitialDataAction')
+      // 这样写才是调用root跟的 actions 中的方法
+      dispatch('getInitialDataAction', null, { root: true })
+      // 4, 请求用户菜单
       const userMenusResult = await requestUserMenusByRoleId(userInfo.role.id)
       const userMenus = userMenusResult.data
       commit('changeUserMenus', userMenus)
       localCache.setCache('userMenus', userMenus)
-      // 4, 跳转到主页
+      // 5, 跳转到主页
       router.push('/main')
     },
     // 刷新时从window cache 中重新加载数据到 vuex

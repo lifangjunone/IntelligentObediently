@@ -8,7 +8,8 @@ const store = createStore<IRootState>({
   state: () => {
     return {
       entiresDepartment: [],
-      entiresRole: []
+      entiresRole: [],
+      entiresMenu: []
     }
   },
   mutations: {
@@ -17,6 +18,9 @@ const store = createStore<IRootState>({
     },
     changeEntiresRole: (state, role) => {
       state.entiresRole = role
+    },
+    changeEntiresMenu: (state, menu) => {
+      state.entiresMenu = menu
     }
   },
   getters: {},
@@ -36,9 +40,12 @@ const store = createStore<IRootState>({
       })
       // 解构起别名：  list: roleList 这个是起别名的语法，并不是指定类型，注意注意注意
       const { list: roleList } = roleResult.data
+      const menuResult = await getPageListData('/menus', {})
+      const { list: menuList } = menuResult.data
       // 3. 保存数据
       commit('changeEntiresDepartment', departmentList)
       commit('changeEntiresRole', roleList)
+      commit('changeEntiresMenu', menuList)
     }
   },
   modules: {

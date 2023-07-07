@@ -10,7 +10,9 @@
       </span>
       <template #dropdown>
         <el-dropdown-menu>
-          <el-dropdown-item icon="SwitchButton">退出登录</el-dropdown-item>
+          <el-dropdown-item icon="SwitchButton" @click="handleExitClick"
+            >退出登录</el-dropdown-item
+          >
           <el-dropdown-item divided> 用户信息 </el-dropdown-item>
           <el-dropdown-item>系统管理</el-dropdown-item>
         </el-dropdown-menu>
@@ -22,11 +24,18 @@
 <script setup lang="ts">
 import { useStore } from '@/store'
 import { computed, ref } from 'vue'
+import locaCache from '@/utils/cache'
+import { useRouter } from 'vue-router'
 const store = useStore()
+const router = useRouter()
 const name = computed(() => store.state.login.userInfo.name)
 const avatar = ref(
   'https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png'
 )
+const handleExitClick = () => {
+  locaCache.deleteCache('token')
+  router.push('/main')
+}
 </script>
 <style scoped lang="less">
 .el-dropdown-link {

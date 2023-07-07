@@ -8,6 +8,7 @@
       destroy-on-close
     >
       <fj-form v-bind="modalConfig" v-model="formData"></fj-form>
+      <slot></slot>
       <template #footer>
         <span class="dialog-footer">
           <el-button @click="dialogVisible = false">取消</el-button>
@@ -46,6 +47,10 @@ const props = defineProps({
   formData: {
     type: Object,
     default: () => ({})
+  },
+  otherInfo: {
+    type: Object,
+    default: () => ({})
   }
 })
 const dialogVisible = ref(false)
@@ -67,13 +72,13 @@ const handleCommitClick = () => {
   if (Object.keys(props.sourceValue).length === 0) {
     // 新建请求
     store.dispatch('system/createPageDataAction', {
-      payload: formData.value,
+      payload: { ...formData.value, ...props.otherInfo },
       requestInfo: props.requestInfo
     })
   } else {
     // 编辑请求
     store.dispatch('system/editPageDataAction', {
-      payload: formData.value,
+      payload: { ...formData.value, ...props.otherInfo },
       requestInfo: props.requestInfo,
       id: props.sourceValue.id
     })
