@@ -1,7 +1,12 @@
 import { IRootState } from '../type'
 import { ISystemState } from './typs'
 import { Module } from 'vuex'
-import { getPageListData, deletePageData } from '@/service/main/system/system'
+import {
+  getPageListData,
+  deletePageData,
+  createPageData,
+  editPageData
+} from '@/service/main/system/system'
 
 const systemModule: Module<ISystemState, IRootState> = {
   namespaced: true,
@@ -14,7 +19,9 @@ const systemModule: Module<ISystemState, IRootState> = {
       shopList: [],
       shopCount: 0,
       menuList: [],
-      menuCount: 0
+      menuCount: 0,
+      departmentList: [],
+      departmentCount: 0
     }
   },
   getters: {
@@ -56,9 +63,16 @@ const systemModule: Module<ISystemState, IRootState> = {
     },
     changeMenuCount(state, menuCount: number) {
       state.menuCount = menuCount
+    },
+    changeDepartmentList(state, departmentList: any[]) {
+      state.departmentList = departmentList
+    },
+    changeDepartmentCount(state, departmentCount: number) {
+      state.departmentCount = departmentCount
     }
   },
   actions: {
+    // 获取页面数据
     async getPageListAction({ commit }, payload) {
       const pageName = payload.requestInfo.pageName
       const pageUrl = payload.requestInfo.pageUrl
@@ -74,6 +88,7 @@ const systemModule: Module<ISystemState, IRootState> = {
       commit(`change${pageName}List`, list)
       commit(`change${pageName}Count`, totalCount)
     },
+    // 删除页面数据
     async deletePageDataAction({ dispatch }, payload: any) {
       const id = payload.id
       const pageName = payload.requestInfo.pageName
@@ -82,6 +97,23 @@ const systemModule: Module<ISystemState, IRootState> = {
       await deletePageData(pageUrl)
       // 重新请求最新的数据
       dispatch('getPageListAction', payload)
+    },
+    // 创建页面数据
+    async createPageDataAction({ dispatch }, data: any) {
+      const { payload, requestInfo } = data
+      const pageName = requestInfo.pageName
+      const pageUrl = `${pageName.toLowerCase()}`
+      await createPageData(pageUrl, payload)
+      // 重新请求最新的数据
+      dispatch('getPageListAction', data)
+    },
+    // 编辑页面数据
+    async editPageDataAction({ dispatch }, data: any) {
+      const { payload, requestInfo, id } = data
+      const pageName = requestInfo.pageName
+      const pageUrl = `${pageName.toLowerCase()}/${id}`
+      await editPageData(pageUrl, payload)
+      // 重新请求最新的数据
     }
   }
 }

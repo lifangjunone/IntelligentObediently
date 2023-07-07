@@ -2,8 +2,8 @@ import { ILoginState } from './login/type'
 import { ISystemState } from './system/typs'
 
 export interface IRootState {
-  name: string
-  age: number
+  entiresDepartment: any[]
+  entiresRole: any[]
 }
 
 export interface IRootWithModule {

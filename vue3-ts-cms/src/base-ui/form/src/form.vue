@@ -116,7 +116,7 @@ const emit = defineEmits(['update:modelValue'])
 // 子组件的值修改会影响父组件的值，因此子组件数据的变动不需要通过watch进行监控，然后在通过
 // emit 进行发送事件给父组件进行更新数据
 // 方法二
-const sonFormData = ref(props.modelValue)
+// const sonFormData = ref(props.modelValue)
 // 监控子组件的数据，然后修改父组件的数据
 const handleValueChange = (value: any, field: string) => {
   emit('update:modelValue', { ...props.modelValue, [field]: value })
